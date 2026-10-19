@@ -1,0 +1,152 @@
+window.NEURO = {
+  checked: '2026-10-18',
+  repository: 'https://github.com/LiquidAzir/neuromancer-library',
+  checkpoints: ['Explain it', 'Derive it', 'Build it', 'Find its limits'],
+  resources: [
+    {
+      id: 'networks', number: '01', title: 'Neural Networks: Zero to Hero', short: 'Neural networks', author: 'Andrej Karpathy', type: 'Course', weeks: 'Weeks 1–2', effort: '8–12 hours', color: 'mint',
+      summary: 'Make learning tangible. Follow a gradient from a prediction all the way back to the weights that produced it.',
+      primary: 'https://karpathy.ai/zero-to-hero.html', primaryLabel: 'Open the course', pdf: null,
+      tags: ['Backpropagation', 'MLP', 'Python'], prerequisite: 'Python functions and arrays; derivatives and the chain rule. Use Deep Learning chapters 2–4 to refresh the mathematics as needed.',
+      read: 'Start with the micrograd lecture. Continue through makemore’s MLP material, then use “Becoming a Backprop Ninja” for manual tensor derivatives. Pause often and reconstruct the steps yourself.',
+      equation: 'h = tanh(XW₁ + b₁); ŷ = hW₂ + b₂; θ ← θ − η∇θL',
+      intuition: 'A gradient tells each parameter how a small change would affect the error. Backpropagation reuses local derivatives across a computation graph.',
+      links: [{label:'Official lesson code',url:'https://github.com/karpathy/nn-zero-to-hero'},{label:'micrograd reference',url:'https://github.com/karpathy/micrograd'}],
+      exercise: {title:'Build an MLP with manual backpropagation',tools:'Python + NumPy; CPU is enough. Use autograd only as a separate check.',steps:[
+        'Create a fixed-seed two-class toy dataset. Keep a separate validation split and record its seed.',
+        'Implement a two-layer tanh network and a numerically stable binary cross-entropy loss from logits.',
+        'Derive and implement all weight and bias gradients by hand. Track the shape of every intermediate array.',
+        'Check a sample of parameters with central finite differences: [L(θ+ε)−L(θ−ε)]/(2ε), trying ε around 10⁻⁵ in float64.',
+        'Train with gradient descent and save training/validation losses plus a short explanation of one failed run.'
+      ], done:['Manual gradients agree with finite differences within 10⁻⁴ relative error on non-negligible gradients; use absolute error near zero.','The model can overfit a tiny batch, then learn on a held-out toy split.','Explain a saturation or learning-rate failure without referring to the code.'], limit:'Learning a toy decision boundary does not establish general intelligence, biological realism, or robustness outside the training distribution.'},
+      rights: 'The lesson repository and micrograd code use the MIT license. That code license is not a blanket license to redistribute the videos. The course is linked at its official site; no official course PDF was identified.',
+      evidence: [{label:'Lesson repository license',url:'https://github.com/karpathy/nn-zero-to-hero/blob/master/LICENSE'},{label:'micrograd license',url:'https://github.com/karpathy/micrograd/blob/master/LICENSE'}]
+    },
+    {
+      id: 'theory', number: '02', title: 'Deep Learning', short: 'Deep learning theory', author: 'Ian Goodfellow · Yoshua Bengio · Aaron Courville', type: 'Book', weeks: 'Weeks 3–4', effort: '10–14 hours', color: 'blue',
+      summary: 'Connect successful training to the mathematics of optimization and generalization.',
+      primary:'https://www.deeplearningbook.org/', primaryLabel:'Read the web book', pdf:null,
+      tags:['Optimization','Regularization','Generalization'], prerequisite:'Module 01 and basic linear algebra/probability. Read chapters 2–5 selectively if those foundations are unfamiliar.',
+      read:'Focus on chapter 6 (feedforward networks), chapter 7 (regularization), chapter 8 (optimization), and chapter 11 (practical methodology). You do not need to read the entire book before experimenting.',
+      equation:'J(θ) = meanᵢ ℓ(fθ(xᵢ), yᵢ) + λ‖W‖²₂',
+      intuition:'Reducing training error and improving performance on new data are different objectives. Optimization controls the update; regularization controls what solutions are favored.',
+      links:[{label:'Chapter 6 · Feedforward networks',url:'https://www.deeplearningbook.org/contents/mlp.html'},{label:'Chapter 7 · Regularization',url:'https://www.deeplearningbook.org/contents/regularization.html'},{label:'Chapter 8 · Optimization',url:'https://www.deeplearningbook.org/contents/optimization.html'},{label:'Chapter 11 · Practical methodology',url:'https://www.deeplearningbook.org/contents/guidelines.html'}],
+      exercise:{title:'Compare optimizers and regularization',tools:'Python + NumPy or PyTorch; use the same small dataset and network from module 01.',steps:[
+        'Freeze the data split, architecture, batch size, training budget, and evaluation metrics.',
+        'Compare SGD, momentum SGD, and Adam. Give each the same small learning-rate search budget and choose settings using validation data.',
+        'With one chosen optimizer, compare no regularization, an L2 loss penalty, and dropout. Keep other settings fixed.',
+        'Run each condition with at least three seeds. Record loss curves, validation accuracy, and elapsed time.',
+        'Select once using validation performance; evaluate on the untouched test split and write a one-page conclusion.'
+      ],done:['A table reports mean and spread over seeds, with equal tuning budgets.','The test split was not used to choose settings.','Explain why an L2 loss penalty is not generally equivalent to decoupled weight decay for Adam.'],limit:'Results from a small dataset are evidence about this setup, not a universal ranking of optimizers.'},
+      rights:'Free official HTML edition. The authors’ FAQ explicitly says their MIT Press contract forbids distributing the book as a PDF. The library links to chapters and does not mirror or convert them.',
+      evidence:[{label:'Official book and PDF FAQ',url:'https://www.deeplearningbook.org/'}]
+    },
+    {
+      id:'attention',number:'03',title:'Attention Is All You Need',short:'Transformers',author:'Ashish Vaswani et al. · 2017',type:'Paper',weeks:'Week 5',effort:'6–8 hours',color:'purple',
+      summary:'Understand how a token gathers information from other tokens, and why the mask matters.',
+      primary:'https://arxiv.org/abs/1706.03762',primaryLabel:'Open paper details',pdf:'https://arxiv.org/pdf/1706.03762',pdfLabel:'Read official PDF',
+      tags:['Self-attention','Causal masking','Transformers'],prerequisite:'Modules 01–02; matrix multiplication, softmax, and tensor shapes.',
+      read:'Read the abstract, section 3 (especially 3.2), and section 4. Sketch the encoder and decoder. The original model is encoder–decoder; the exercise isolates the decoder’s causal self-attention.',
+      equation:'Attention(Q,K,V) = softmax(QKᵀ / √dₖ + M)V',
+      intuition:'Queries ask what is relevant; keys indicate what a token offers; values carry the information mixed into the output. A causal mask prevents access to future positions.',
+      links:[{label:'Official arXiv record',url:'https://arxiv.org/abs/1706.03762'}],
+      exercise:{title:'Implement causal self-attention',tools:'Python + NumPy or PyTorch. Start with a single head on a sequence of four tokens.',steps:[
+        'Project an input of shape (batch, tokens, channels) into Q, K, and V. Write down all resulting shapes.',
+        'Compute scaled dot products. Apply an upper-triangular mask with negative infinity before a stable row-wise softmax.',
+        'Multiply the attention weights by V. Inspect the weight matrix for a short example.',
+        'Perturb only a future token and verify that earlier outputs are unchanged, with dropout disabled.',
+        'Extend to multiple heads and a final output projection. Compare against a trusted framework implementation with identical weights.'
+      ],done:['Every attention row sums to one and forbidden future weights are zero.','The future-token perturbation test passes within floating-point tolerance.','Explain the scaling factor, the tensor dimensions, and the difference between self- and cross-attention.'],limit:'Attention weights alone are not a reliable causal explanation. This exercise does not reproduce the full paper’s training experiment.'},
+      rights:'The arXiv record provides an authorized direct PDF. Its non-exclusive distribution license grants rights to arXiv; it is not a general redistribution license for this repository. We link rather than rehost the paper.',
+      evidence:[{label:'Paper’s license',url:'https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html'},{label:'Version and access record',url:'https://arxiv.org/abs/1706.03762'}]
+    },
+    {
+      id:'language',number:'04',title:'nanoGPT',short:'Language models',author:'Andrej Karpathy',type:'Code',weeks:'Weeks 6–7',effort:'8–12 hours',color:'amber',
+      summary:'Turn next-token prediction into a complete experiment: data, training, evaluation, and sampling.',
+      primary:'https://github.com/karpathy/nanoGPT',primaryLabel:'Open the repository',pdf:null,
+      tags:['Autoregression','Training','Evaluation'],prerequisite:'Module 03; Python, PyTorch fundamentals, and train/validation splits.',
+      read:'Read the README’s quick start, then follow the data pipeline, model.py, and train.py. Use the tiny CPU settings first. Record the exact upstream commit for reproducibility.',
+      equation:'p(x₁…xT) = ∏ₜ p(xₜ | x₁…xₜ₋₁)',
+      intuition:'A language model learns a distribution over the next token. Repeated sampling turns that local prediction into a sequence.',
+      notice:'Legacy teaching resource: the author marked nanoGPT deprecated in November 2025 and points to nanochat. This library retains nanoGPT for the requested small-model exercise.',
+      links:[{label:'Model implementation',url:'https://github.com/karpathy/nanoGPT/blob/master/model.py'},{label:'Training loop',url:'https://github.com/karpathy/nanoGPT/blob/master/train.py'},{label:'Author’s newer project · optional',url:'https://github.com/karpathy/nanochat'}],
+      exercise:{title:'Train a small autoregressive model',tools:'Python + PyTorch in an isolated environment. Use a small CPU configuration or an existing GPU; no paid compute is required for the basic exercise.',steps:[
+        'Choose a small text corpus you wrote or have permission to use. Record its source and license; do not assume a code license covers datasets.',
+        'Split the text before making training windows. Define a simple character vocabulary and measure a unigram baseline.',
+        'Train a tiny model: two layers, two heads, 64 channels, and a short context. Disable compilation if unsupported; start with a few hundred updates.',
+        'Record train and validation cross-entropy, tokenization, seed, configuration, runtime, and the upstream commit.',
+        'Sample with two temperatures, then remove or alter one component and compare validation loss under the same budget.'
+      ],done:['The model predicts next tokens without accessing future targets.','Report validation loss relative to the unigram baseline, even if the experiment fails.','Save configuration and short samples; discuss memorization and train/validation leakage.'],limit:'Fluent samples do not establish truth, reasoning ability, or safe behavior. Small-run results do not extrapolate directly to large models.'},
+      rights:'MIT-licensed code repository. Preserve the license if copying code. Dataset and pretrained-weight terms must be checked separately. This is a code resource, not a PDF book.',
+      evidence:[{label:'nanoGPT MIT license',url:'https://github.com/karpathy/nanoGPT/blob/master/LICENSE'},{label:'Deprecation notice in README',url:'https://github.com/karpathy/nanoGPT'}]
+    },
+    {
+      id:'reinforcement',number:'05',title:'Spinning Up in Deep RL',short:'Reinforcement learning',author:'OpenAI · Joshua Achiam and contributors',type:'Guide',weeks:'Week 8',effort:'6–10 hours',color:'coral',
+      summary:'Learn from consequences. Connect an action’s probability to the return that follows it.',
+      primary:'https://spinningup.openai.com/en/latest/',primaryLabel:'Read the web guide',pdf:'https://spinningup.openai.com/_/downloads/en/latest/pdf/',pdfLabel:'Read official docs PDF',
+      tags:['Policy gradients','Returns','Exploration'],prerequisite:'Modules 01–02; probability, expectations, and log derivatives. Module 04 is not required.',
+      read:'Read Introduction to RL parts 1–3, then the Vanilla Policy Gradient page. Focus on the policy-gradient derivation before exploring the larger algorithm collection.',
+      equation:'∇θJ ≈ mean trajectories [Σₜ ∇θ log πθ(aₜ|sₜ) Gₜ]',
+      intuition:'Increase the probability of actions associated with better returns. Because rewards are noisy and delayed, a single lucky run is weak evidence.',
+      notice:'The documentation and examples use an older software stack. The exercise can be implemented independently; check environment reset/step APIs if using a current simulator.',
+      links:[{label:'Part 1 · Key concepts',url:'https://spinningup.openai.com/en/latest/spinningup/rl_intro.html'},{label:'Part 3 · Policy optimization',url:'https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html'},{label:'Vanilla Policy Gradient',url:'https://spinningup.openai.com/en/latest/algorithms/vpg.html'}],
+      exercise:{title:'Implement a simple policy-gradient agent',tools:'Python + NumPy or PyTorch. Start with a two-action bandit, then a short episodic environment.',steps:[
+        'Implement a two-action softmax policy on a bandit with known reward probabilities. Verify the direction of the policy-gradient update.',
+        'Extend to a small episodic environment: collect trajectories and compute discounted reward-to-go, resetting at episode boundaries.',
+        'Optimize the negative sum of log action probabilities weighted by detached returns. Make the sign and normalization explicit.',
+        'Add a baseline independent of the sampled action and compare learning variability with and without it.',
+        'Run at least five seeds. Plot returns against environment interactions and compare with a random policy.'
+      ],done:['The bandit test favors the higher-reward action over repeated runs.','Returns do not leak across episode boundaries; sampled returns do not receive gradients.','Report the distribution of results, including unsuccessful seeds.'],limit:'An agent optimizes the specified reward, which may be a poor proxy for the behavior you intended.'},
+      rights:'The official documentation provides this downloadable PDF. The Spinning Up repository is MIT-licensed. Linked third-party papers retain their own terms. No external PDF is stored in this library.',
+      evidence:[{label:'Spinning Up MIT license',url:'https://github.com/openai/spinningup/blob/master/LICENSE'},{label:'Official documentation',url:'https://spinningup.openai.com/en/latest/'}]
+    },
+    {
+      id:'neurons',number:'06',title:'Neuronal Dynamics',short:'Computational neuroscience',author:'Wulfram Gerstner · Werner M. Kistler · Richard Naud · Liam Paninski',type:'Book',weeks:'Week 9',effort:'6–10 hours',color:'mint',
+      summary:'Replace a static activation with a changing membrane potential, a threshold, and a spike.',
+      primary:'https://neuronaldynamics.epfl.ch/online/index.html',primaryLabel:'Read the web book',pdf:null,
+      tags:['Spiking neurons','Dynamics','Simulation'],prerequisite:'Basic differential equations and numerical integration. Module 01 helps with comparisons; the transformer and RL modules are not prerequisites.',
+      read:'Read chapter 1, especially sections 1.3–1.5. Use the companion leaky integrate-and-fire exercises. Treat the Hodgkin–Huxley chapter as an optional next step.',
+      equation:'τₘ du/dt = −(u − uᵣₑₛₜ) + RI(t)',
+      intuition:'Input raises a neuron’s membrane potential while leakage pulls it back toward rest. Threshold crossing triggers a spike and reset.',
+      links:[{label:'Section 1.3 · Integrate-and-fire',url:'https://neuronaldynamics.epfl.ch/online/Ch1.S3.html'},{label:'Section 1.4 · Model limitations',url:'https://neuronaldynamics.epfl.ch/online/Ch1.S4.html'},{label:'Official companion Python exercise',url:'https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html'}],
+      exercise:{title:'Simulate a spiking neuron',tools:'Python + NumPy + a plotting library. Brian is optional for comparison with the companion exercises.',steps:[
+        'Implement a leaky integrate-and-fire neuron with explicit units, resting potential, threshold, reset, resistance, and time constant.',
+        'Use Euler integration for a constant current, then add threshold/reset and a refractory interval.',
+        'Plot membrane potential and spike times for subthreshold and suprathreshold currents.',
+        'Halve the time step repeatedly and compare spike counts and timings. Compare subthreshold voltage with the analytic exponential solution.',
+        'Sweep input current to plot a firing-rate curve. Record what the model omits about real neurons.'
+      ],done:['Units are consistent, and zero input relaxes voltage toward rest.','The numerical subthreshold solution converges toward the analytic solution as the time step shrinks.','A plot shows threshold, reset, and refractory behavior; list at least three biological omissions.'],limit:'An integrate-and-fire model abstracts away ion-channel dynamics, detailed anatomy, and many forms of adaptation. A useful neuron model is not a complete model of cognition.'},
+      rights:'The official EPFL-hosted HTML book is free to read. Cambridge University Press retains copyright; its notice prohibits reproduction without written permission. No authorized full-book PDF was identified, so the library uses the official web edition.',
+      evidence:[{label:'Official copyright notice',url:'https://neuronaldynamics.epfl.ch/online/index.html'},{label:'Author-hosted book site',url:'https://neuronaldynamics.epfl.ch/'}]
+    },
+    {
+      id:'marr',number:'07',title:'Vision · Levels of Analysis',short:'Cognitive neuroscience',author:'David Marr · 1982 / MIT Press edition 2010',type:'Book',weeks:'Week 10',effort:'4–6 hours',color:'blue',
+      summary:'Ask three different questions about one system: what problem, what procedure, and what physical realization?',
+      primary:'https://mitpress.mit.edu/9780262514620/vision/',primaryLabel:'View publisher / access options',pdf:null,
+      tags:['Computational level','Algorithms','Implementation'],prerequisite:'One completed implementation from this library. You can preview the three questions on day one and return for the capstone.',
+      read:'Use chapter 1, “The Philosophy and the Approach,” especially section 1.2 and “The Three Levels.” Borrow Vision through a library or use an authorized purchased/institutional copy.',
+      equation:'Problem & objective → representations & algorithm → physical implementation',
+      intuition:'The task a system solves, the representation and procedure it uses, and its physical realization answer distinct questions. A strong explanation connects all three.',
+      notice:'Access may require purchase or a library/institutional subscription. The user-supplied NYU chapter scan could not be verified as an authorized public download; it is not offered as a PDF button.',
+      links:[{label:'Publisher-hosted chapter access',url:'https://doi.org/10.7551/mitpress/9780262514620.003.0002'}],
+      exercise:{title:'Analyze one AI system at three levels',tools:'Your notes and a working implementation from modules 01–06. No additional compute is needed.',steps:[
+        'Choose one specific system: for example, your tiny next-token model. Define the actual input, output, and evaluation setting.',
+        'At the computational level, state the problem, objective, assumptions, and what would count as success.',
+        'At the algorithmic level, describe representations, transformations, learning, and inference.',
+        'At the implementation level, document the actual hardware, numerical precision, memory use, and execution constraints.',
+        'Change one level at a time. Predict what stays invariant and what changes, then test one prediction and write a two-page analysis.'
+      ],done:['The analysis separates an objective from the algorithm that pursues it.','Every level includes observable evidence and a limitation.','One controlled change connects at least two levels without claiming that artificial and biological systems are equivalent.'],limit:'The framework organizes explanations; it does not by itself prove that a particular algorithm models the brain.'},
+      rights:'Copyrighted MIT Press book. The official publisher page and chapter access route are provided. The supplied NYU scan has no verified reuse permission in this review and is excluded from the reading links. No claim is made that it is unlawful.',
+      evidence:[{label:'Official publisher record',url:'https://mitpress.mit.edu/9780262514620/vision/'},{label:'Official chapter record',url:'https://doi.org/10.7551/mitpress/9780262514620.003.0002'}]
+    }
+  ],
+  week: [
+    {day:1,title:'Set up your field notebook',time:'45–60 min',resource:'networks',read:'Open Zero to Hero and watch the opening portion of the micrograd lesson. Refresh the chain rule if needed.',build:'Create a local Python environment and implement a scalar function. Compare its derivative by hand with a finite difference.',output:'One derivative check and a paragraph answering: what does a gradient tell us?'},
+    {day:2,title:'Follow the gradient',time:'60–90 min',resource:'networks',read:'Continue micrograd through the computation graph and backward pass.',build:'Draw a small graph, derive every local gradient, and implement its backward pass.',output:'A graph annotated with intermediate values and derivatives.'},
+    {day:3,title:'Build one neuron',time:'60–90 min',resource:'networks',read:'Study the neuron and nonlinearity portions of the course.',build:'Implement a tanh neuron and test both small and saturated inputs.',output:'A numerical derivative check and an explanation of saturation.'},
+    {day:4,title:'Connect a small network',time:'60–90 min',resource:'networks',read:'Start the MLP material; use Deep Learning chapter 6 as a reference.',build:'Create a two-layer forward pass. Define a stable loss and annotate tensor shapes.',output:'A working forward pass with finite loss on a tiny fixed dataset.'},
+    {day:5,title:'Make the network learn',time:'60–90 min',resource:'networks',read:'Review manual backpropagation for the operations in your network.',build:'Implement the backward pass, check gradients, and overfit a tiny batch.',output:'A loss curve plus the largest gradient-check discrepancy.'},
+    {day:6,title:'Try to break it',time:'60–90 min',resource:'theory',read:'Skim chapter 7’s regularization motivation and chapter 8’s gradient descent discussion.',build:'Change the learning rate and data split. Compare training and validation behavior.',output:'One failed experiment, its diagnosis, and one proposed fix.'},
+    {day:7,title:'Explain what you built',time:'45–60 min',resource:'marr',read:'Review your notes; preview Marr’s three questions in the capstone brief.',build:'Explain the MLP without looking at code. Describe its objective, algorithm, physical implementation, and two limitations.',output:'A one-page lab note. Finish module 01’s checkpoints only when you can demonstrate them.'}
+  ]
+};

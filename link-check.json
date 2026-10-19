@@ -1,0 +1,369 @@
+{
+  "generated_at_utc": "2026-10-19T01:56:42.794573+00:00",
+  "license_review_date": "2026-10-18",
+  "method": "GET; follow redirects; read first 1024 bytes; verify PDF signature. Availability does not imply redistribution permission.",
+  "links": [
+    {
+      "url": "https://karpathy.ai/zero-to-hero.html",
+      "purpose": [
+        "official source"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.508783+00:00",
+      "status": 200,
+      "final_url": "https://karpathy.ai/zero-to-hero.html",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/nn-zero-to-hero",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.509783+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/nn-zero-to-hero",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/micrograd",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.509783+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/micrograd",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/nn-zero-to-hero/blob/master/LICENSE",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.509783+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/nn-zero-to-hero/blob/master/LICENSE",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/micrograd/blob/master/LICENSE",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.509783+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/micrograd/blob/master/LICENSE",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://www.deeplearningbook.org/",
+      "purpose": [
+        "official source",
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.509783+00:00",
+      "status": 200,
+      "final_url": "https://www.deeplearningbook.org/",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.628566+00:00",
+      "status": 200,
+      "final_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://www.deeplearningbook.org/contents/regularization.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.717724+00:00",
+      "status": 200,
+      "final_url": "https://www.deeplearningbook.org/contents/regularization.html",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://www.deeplearningbook.org/contents/optimization.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.829393+00:00",
+      "status": 200,
+      "final_url": "https://www.deeplearningbook.org/contents/optimization.html",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://www.deeplearningbook.org/contents/guidelines.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.949182+00:00",
+      "status": 200,
+      "final_url": "https://www.deeplearningbook.org/contents/guidelines.html",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://arxiv.org/abs/1706.03762",
+      "purpose": [
+        "official source",
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:20.990750+00:00",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1706.03762",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1706.03762",
+      "purpose": [
+        "direct PDF"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.027292+00:00",
+      "status": 200,
+      "final_url": "https://arxiv.org/pdf/1706.03762",
+      "content_type": "application/pdf",
+      "pdf_header": true,
+      "result": "verified"
+    },
+    {
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.039323+00:00",
+      "status": 200,
+      "final_url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/nanoGPT",
+      "purpose": [
+        "official source",
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.054846+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/nanoGPT",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/nanoGPT/blob/master/model.py",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.070371+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/nanoGPT/blob/master/model.py",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/nanoGPT/blob/master/train.py",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.080231+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/nanoGPT/blob/master/train.py",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/nanochat",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.089746+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/nanochat",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/karpathy/nanoGPT/blob/master/LICENSE",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.099754+00:00",
+      "status": 200,
+      "final_url": "https://github.com/karpathy/nanoGPT/blob/master/LICENSE",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://spinningup.openai.com/en/latest/",
+      "purpose": [
+        "official source",
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.282205+00:00",
+      "status": 200,
+      "final_url": "https://spinningup.openai.com/en/latest/",
+      "content_type": "text/html",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://spinningup.openai.com/_/downloads/en/latest/pdf/",
+      "purpose": [
+        "direct PDF"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.347836+00:00",
+      "status": 200,
+      "final_url": "https://spinningup.openai.com/_/downloads/en/latest/pdf/",
+      "content_type": "application/pdf",
+      "pdf_header": true,
+      "result": "verified"
+    },
+    {
+      "url": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.449998+00:00",
+      "status": 200,
+      "final_url": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+      "content_type": "text/html",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.494581+00:00",
+      "status": 200,
+      "final_url": "https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html",
+      "content_type": "text/html",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://spinningup.openai.com/en/latest/algorithms/vpg.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.542660+00:00",
+      "status": 200,
+      "final_url": "https://spinningup.openai.com/en/latest/algorithms/vpg.html",
+      "content_type": "text/html",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://github.com/openai/spinningup/blob/master/LICENSE",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.556678+00:00",
+      "status": 200,
+      "final_url": "https://github.com/openai/spinningup/blob/master/LICENSE",
+      "content_type": "text/html; charset=utf-8",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://neuronaldynamics.epfl.ch/online/index.html",
+      "purpose": [
+        "official source",
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.582212+00:00",
+      "result": "network_error",
+      "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+    },
+    {
+      "url": "https://neuronaldynamics.epfl.ch/online/Ch1.S3.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.592228+00:00",
+      "result": "network_error",
+      "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+    },
+    {
+      "url": "https://neuronaldynamics.epfl.ch/online/Ch1.S4.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.602241+00:00",
+      "result": "network_error",
+      "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+    },
+    {
+      "url": "https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.612261+00:00",
+      "status": 200,
+      "final_url": "https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html",
+      "content_type": "text/html",
+      "pdf_header": false,
+      "result": "verified"
+    },
+    {
+      "url": "https://neuronaldynamics.epfl.ch/",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.673911+00:00",
+      "result": "network_error",
+      "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+    },
+    {
+      "url": "https://mitpress.mit.edu/9780262514620/vision/",
+      "purpose": [
+        "official source",
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.774100+00:00",
+      "status": 403,
+      "final_url": "https://mitpress.mit.edu/9780262514620/vision/",
+      "result": "automated_access_blocked"
+    },
+    {
+      "url": "https://doi.org/10.7551/mitpress/9780262514620.003.0002",
+      "purpose": [
+        "reference or license"
+      ],
+      "checked_at_utc": "2026-10-19T01:56:21.870061+00:00",
+      "status": 403,
+      "final_url": "https://academic.oup.com/mit-press-scholarship-online/book/13528/chapter/167047813",
+      "result": "automated_access_blocked"
+    }
+  ]
+}
